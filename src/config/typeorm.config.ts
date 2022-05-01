@@ -1,13 +1,13 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm'
 
 export const typeOrmConfig: TypeOrmModuleOptions = {
+  // FIXME: These values should be set via env vars.
   type: 'postgres',
-  host: 'localhost',
+  host: 'nestjs-sample-db',
   port: 5432,
-  username: 'postgres',
-  password: 'postgres',
-  database: 'assignment_nestjs',
+  username: 'pgadmin',
+  password: 'pgpassword',
+  database: 'pgdb',
   entities: [__dirname + '/../**/*.entity.{js, ts}'],
   synchronize: true,
 }
-

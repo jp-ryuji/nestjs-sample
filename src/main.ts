@@ -23,6 +23,6 @@ async function bootstrap() {
     SwaggerModule.setup('api', app, document)
   }
 
-  await app.listen(3000)
+  await app.listen(3000) // FIXME: The value should be set via env var.
 }
 bootstrap()
