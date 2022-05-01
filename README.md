@@ -26,6 +26,9 @@ $ yarn run test
 # e2e tests
 $ yarn run test:e2e
 
+# all tests
+$ yarn run test:all
+
 # test coverage
 $ yarn run test:cov
 ```
