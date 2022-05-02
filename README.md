@@ -32,3 +32,13 @@ $ yarn run test:all
 # test coverage
 $ yarn run test:cov
 ```
+
+## Removing the docker containers
+
+```bash
+# remove docker containers
+$ yarn run remove
+
+# remove docker containers and volume
+$ yarn run remove:volume
+```

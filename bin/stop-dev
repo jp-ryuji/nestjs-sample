@@ -1,0 +1,30 @@
+#!/bin/sh
+
+while getopts 'v' c
+do
+  case $c in
+    v) REMOVE_VOLUME=true ;;
+  esac
+done
+
+if test "$HELP" = "true"; then
+  echo "Usage: stop-dev [-d]"
+  echo "\t-h       Display Help"
+  echo "\t-v       Remove docker volume along with removing containers"
+  exit
+fi
+
+PROJECT_ROOT=`dirname $0`/..
+. $PROJECT_ROOT/.env
+
+# Determine which options should be set
+NEST_SCRIPT="nest"
+if test "$REMOVE_VOLUME" = "true"; then
+  OPTIONS="--volume"
+fi
+
+export NEST_SCRIPT NODE_ENV NEST_PORT NEST_DEBUG_PORT \
+	DB_PORT DB_USERNAME DB_PASSWORD DB_NAME POSTGRES_INITDB_ARGS PGPASSWORD POSTGRES_TZ \
+	REDIS_PORT \
+	OPTIONS
+docker-compose -f $PROJECT_ROOT/docker/dev/docker-compose.yml -p nestjs-sample down $OPTIONS

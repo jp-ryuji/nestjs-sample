@@ -1,0 +1,35 @@
+#!/bin/sh
+
+while getopts 'hdw' c
+do
+  case $c in
+    h) HELP=true ;;
+    d) DEBUG=true ;;
+    w) WATCH=true ;;
+  esac
+done
+
+if test "$HELP" = "true"; then
+  echo "Usage: start-dev [-h] [-d] [-w] [-a]"
+  echo "\t-h       Display Help"
+  echo "\t-d       Debug mode (--inspect)"
+  echo "\t-w       Watch mode (live-reload)"
+  exit
+fi
+
+PROJECT_ROOT=`dirname $0`/..
+. $PROJECT_ROOT/.env
+
+# Determine which nest script to run
+NEST_SCRIPT="nest"
+if test "$DEBUG" = "true"; then
+  NEST_SCRIPT="nest:debug"
+elif test "$WATCH" = "true"; then
+  NEST_SCRIPT="nest:dev"
+fi
+
+# Start Server!
+export NEST_SCRIPT NODE_ENV NEST_PORT NEST_DEBUG_PORT \
+  DB_PORT DB_USERNAME DB_PASSWORD DB_NAME POSTGRES_INITDB_ARGS PGPASSWORD POSTGRES_TZ \
+  REDIS_PORT
+docker-compose -f $PROJECT_ROOT/docker/dev/docker-compose.yml -p nestjs-sample up
