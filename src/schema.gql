@@ -1,0 +1,25 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Post {
+  content: String!
+  userId: String!
+  user: User!
+}
+
+type User {
+  name: String!
+  companyId: String
+  company: Company
+  posts: [Post!]!
+}
+
+type Company {
+  name: String!
+  users: [User!]!
+}
+
+type Query {
+  userById(id: String!): User!
+}
