@@ -1,0 +1,34 @@
+@startuml er-diagram
+
+entity company {
+  * id: CHAR(36) <<generated>>
+  * createdAt: DATETIME
+  * updatedAt: DATETIME
+  --
+  * name: VARCHAR(255)
+}
+
+entity user {
+  * id: CHAR(36) <<generated>>
+  * createdAt: DATETIME
+  * updatedAt: DATETIME
+  --
+  * name: VARCHAR(255)
+  --
+  companyId: CHAR(36) <<FK>>
+}
+
+entity post {
+  * id: CHAR(36) <<generated>>
+  * createdAt: DATETIME
+  * updatedAt: DATETIME
+  --
+  * content: VARCHAR(255)
+  --
+  * userId: CHAR(36) <<FK>>
+}
+
+company |o--o{ user
+user ||--o{ post
+
+@enduml
