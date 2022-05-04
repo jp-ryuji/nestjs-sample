@@ -44,3 +44,10 @@ $ yarn run remove
 # remove docker containers and volume
 $ yarn run remove:volume
 ```
+
+## Inserting the sample data
+
+```bash
+# should be executed when the database is running
+$ yarn run init:data
+```
