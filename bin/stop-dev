@@ -8,7 +8,7 @@ do
 done
 
 if test "$HELP" = "true"; then
-  echo "Usage: stop-dev [-d]"
+  echo "Usage: stop-dev [-v]"
   echo "\t-h       Display Help"
   echo "\t-v       Remove docker volume along with removing containers"
   exit
