@@ -10,6 +10,10 @@ export class UserService {
     private readonly repo: Repository<User>
   ) {}
 
+  findAll(where?: Partial<User>): Promise<User[]> {
+    return this.repo.find({ where })
+  }
+
   findOne(
     where: Partial<User>,
     relations?: string[]
