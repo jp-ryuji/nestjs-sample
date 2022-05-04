@@ -1,0 +1,8 @@
+#!/bin/sh
+
+PROJECT_ROOT=`dirname $0`/..
+. $PROJECT_ROOT/.env
+
+echo "Inserting data using sample-data.sql."
+
+PGPASSWORD=$PGPASSWORD psql -h localhost -p $DB_PORT -U $DB_USERNAME $DB_NAME < data/sample-data.sql
