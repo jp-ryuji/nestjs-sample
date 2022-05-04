@@ -10,4 +10,5 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   database: 'pgdb',
   entities: [__dirname + '/../**/*.entity.{js, ts}'],
   synchronize: true,
+  logging: ['query', 'info'],
 }
