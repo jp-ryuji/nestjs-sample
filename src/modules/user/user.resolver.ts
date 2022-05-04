@@ -9,7 +9,7 @@ export class UserResolver {
 
   @Query(() => User, { name: 'userById' })
   async getUserById(@Args('id') id: string): Promise<User> {
-    const user = await this.userService.findOneByIdWithRelations(id)
+    const user = await this.userService.findOne({ id })
     if (!user) {
       throw new NotFoundException(`User not found (id: ${id})`)
     }
