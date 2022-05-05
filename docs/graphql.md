@@ -30,12 +30,3 @@ See more: [API Reference: ApolloServer](https://www.apollographql.com/docs/apoll
 ## DataLoader
 
 [DataLoader](https://github.com/graphql/dataloader) is adopted to solve the N+1 problem.
-
-Import the module as follows. Otherwise, `Context creation failed: dataloader_1.default is not a constructor` error occurs even if `"allowSyntheticDefaultImports": true` is set in `tsconfig.json`.
-
-```ts
-import * as DataLoader from 'dataloader'
-
-// instead of
-import DataLoader from 'dataloader'
-```
