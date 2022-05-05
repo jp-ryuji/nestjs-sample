@@ -1,15 +1,17 @@
 import { Post } from '@entities/post.entity'
 import { User } from '@entities/user.entity'
-import { Parent, ResolveField, Resolver } from '@nestjs/graphql'
-import { PostService } from './post.service'
+import { Context, Parent, ResolveField, Resolver } from '@nestjs/graphql'
+import { IPostLoaders } from './post-loader/post.loader'
 
 @Resolver(() => User)
 export class PostResolver {
-  constructor(private readonly postService: PostService) {}
-
   @ResolveField('posts', () => [Post])
-  async getPosts(@Parent() user: User): Promise<Post[]> {
+  async getPosts(
+    @Parent() user: User,
+    @Context('postLoaders')
+    { postsByUserIdsLoader: loader }: IPostLoaders
+  ): Promise<Post[]> {
     const { id } = user
-    return this.postService.findAll({ userId: id })
+    return loader.load(id)
   }
 }

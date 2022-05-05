@@ -1,5 +1,11 @@
 # GraphQL
 
+## Apollo Server
+
+Apollo Server is adopted as a GraphQL server.
+
+See more: [API Reference: ApolloServer](https://www.apollographql.com/docs/apollo-server/api/apollo-server/)
+
 ## Playground
 
 - You can access GraphQL playground as follows.
@@ -20,3 +26,16 @@
 
 - It is automatically generated/updated on the server (Nest) startup at this moment. So you have to launch the server every time changes on the schema are made to update it.
   - The GraphQL module should be imported in `src/app.module.ts` to make changes take effect.
+
+## DataLoader
+
+[DataLoader](https://github.com/graphql/dataloader) is adopted to solve the N+1 problem.
+
+Import the module as follows. Otherwise, `Context creation failed: dataloader_1.default is not a constructor` error occurs even if `"allowSyntheticDefaultImports": true` is set in `tsconfig.json`.
+
+```ts
+import * as DataLoader from 'dataloader'
+
+// instead of
+import DataLoader from 'dataloader'
+```
