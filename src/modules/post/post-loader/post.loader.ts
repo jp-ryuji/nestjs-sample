@@ -1,4 +1,4 @@
-import * as DataLoader from 'dataloader'
+import DataLoader from 'dataloader'
 
 import { Injectable } from '@nestjs/common'
 import { PostService } from '../post.service'
