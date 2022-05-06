@@ -1,8 +1,9 @@
 #!/bin/sh
 
-while getopts 'v' c
+while getopts 'hv' c
 do
   case $c in
+    h) HELP=true ;;
     v) REMOVE_VOLUME=true ;;
   esac
 done

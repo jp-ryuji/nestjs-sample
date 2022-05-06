@@ -10,7 +10,7 @@ do
 done
 
 if test "$HELP" = "true"; then
-  echo "Usage: start-dev [-h] [-d] [-w] [-a]"
+  echo "Usage: start-dev [-h] [-d] [-w]"
   echo "\t-h       Display Help"
   echo "\t-d       Debug mode (--inspect)"
   echo "\t-w       Watch mode (live-reload)"
